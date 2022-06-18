@@ -11,5 +11,5 @@ import com.marlon.dscatalog.utils.Convertible;
 public interface IService<T extends Convertible<DTO, ID>, DTO extends Convertible<T, ID>, ID> {
 
 	JpaRepository<T, ID> getRepository();
-	Page<DTO> findAllPaged(Object filter, Pageable pageable);
+	Page<DTO> findAllPaged(String filter, Pageable pageable);
 }

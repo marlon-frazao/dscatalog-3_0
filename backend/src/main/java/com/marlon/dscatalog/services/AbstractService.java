@@ -19,11 +19,11 @@ public abstract class AbstractService<T extends Convertible<DTO, ID>, DTO extend
 	@Transactional
 	public DTO update(DTO dto, ID id) {
 		T entity = getRepository().getOne(id);
-		dto = updateData(entity, dto);
-		return getRepository().save(dto.convert()).convert();
+		entity = updateData(entity, dto);
+		return getRepository().save(entity).convert();
 	}
 	
-	protected abstract DTO updateData(T entity, DTO dto);
+	protected abstract T updateData(T entity, DTO dto);
 
 	@Transactional(readOnly = true)
 	public DTO getById(ID id) {

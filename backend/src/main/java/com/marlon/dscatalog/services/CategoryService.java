@@ -31,15 +31,14 @@ public class CategoryService extends AbstractService<Category, CategoryDTO, Long
 	}
 
 	@Override
-	public Page<CategoryDTO> findAllPaged(Object filter, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public Page<CategoryDTO> findAllPaged(String filter, Pageable pageable) {
+		return repository.findAllPaged(filter, pageable).get().map(Category::convert);
 	}
 
 	@Override
-	protected CategoryDTO updateData(Category entity, CategoryDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+	protected Category updateData(Category entity, CategoryDTO dto) {
+		entity.setName(dto.getName());
+		return entity;
 	}
 
 }
